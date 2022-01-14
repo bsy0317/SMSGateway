@@ -1,0 +1,5 @@
+Flask==2.0.2
+flask-restx==0.5.1
+pure-python-adb==0.3.0.dev0
+dnspython==2.1.0
+python-dotenv==0.19.2
