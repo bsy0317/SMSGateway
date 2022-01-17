@@ -8,6 +8,7 @@ GPL 3.0 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확�
 [https://opensource.org/licenses/gpl-3.0.html]
 
 ## 실행방법
+![2](https://user-images.githubusercontent.com/6503979/149714141-4d1d5811-cd15-4e5c-a297-06a52a0776ad.PNG)
 1. `pip install -r requirements.txt 를 입력하여 필요한 패키지 설치`  
 2. `adb-conn.bat 을 실행하여 adb server를 실행`  
 3. `flask run 을 입력하여 API 서버 실행`  
