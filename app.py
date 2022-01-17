@@ -3,12 +3,10 @@ import dns.resolver
 import os
 from sender import MSG_Sender
 from flask import Flask, request
-from flask_restx import Api, Resource, fields
-from flask_cors import CORS
+from flask_restx import Api, Resource
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-CORS(app)
 api = Api(app, version='1.0', title='문자전송 API', description='안드로이드 휴대폰과 연결하여 문자를 전송하는 API 입니다.',errors={
     'Exception': {
         'status': 500,
