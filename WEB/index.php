@@ -84,7 +84,7 @@
 			<form enctype="multipart/form-data" name="myForm" action="sender.php" method="post"">
 				<div class="form-group">
 					<label class="small-font" style="font-size:1.4em;">서버 IP</label>
-					<input type="text" class="validate" name="server-ip" placeholder="<?php echo getRealClientIp(); ?>"></div>
+					<input type="text" class="validate" name="server-ip" placeholder="<?php echo getRealClientIp();?>" value="127.0.0.1"></div>
 				<!--<div class="form-group">
 					<label class="small-font" style="font-size:1.4em;">비밀번호</label>
 					<input id="last_name" type="password" class="validate" name="password" placeholder="관리자 PW"> </div>-->
