@@ -8,6 +8,8 @@ from flask import Flask, request, Response
 from flask_restx import Api, Resource
 from dotenv import load_dotenv
 
+WEB_SERVER_ADDR="https://sms.krr.kr"
+
 app = Flask(__name__)
 api = Api(app, version='1.0', title='문자전송 API', description='안드로이드 휴대폰과 연결하여 문자를 전송하는 API 입니다.',errors={
     'Exception': {
@@ -59,18 +61,21 @@ class smsapi(Resource):
             'body': body
         }
         resp = Response(json.dumps(ret_json))
-        resp.headers['Access-Control-Allow-Origin'] = '*'
-        resp.headers['Access-Control-Allow-Headers'] = '*'
+        resp.headers['Access-Control-Allow-Origin'] = WEB_SERVER_ADDR
+        resp.headers['Access-Control-Expose-Headers'] = 'Authorization'
+        resp.headers['Access-Control-Allow-Credentials'] = 'true'
         return resp
     def options(self):
         resp = Response("Preflight")
-        resp.headers['Access-Control-Allow-Origin'] = '*'
-        resp.headers['Access-Control-Allow-Headers'] = '*'
+        resp.headers['Access-Control-Allow-Origin'] = WEB_SERVER_ADDR
+        resp.headers['Access-Control-Expose-Headers'] = 'Authorization'
+        resp.headers['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS'
+        resp.headers['Access-Control-Allow-Headers'] = 'content-type'
         return resp
     def get(self):
         resp = Response("Preflight")
-        resp.headers['Access-Control-Allow-Origin'] = '*'
-        resp.headers['Access-Control-Allow-Headers'] = '*'
+        resp.headers['Access-Control-Allow-Origin'] = WEB_SERVER_ADDR
+        resp.headers['Access-Control-Expose-Headers'] = 'Authorization'
         return resp
         
 class MyErrors(Exception):
@@ -81,8 +86,10 @@ class MyErrors(Exception):
     def response(self):
         txt = {"message": self.message, "status": self.status_code}
         resp = Response(json.dumps(txt))
-        resp.headers['Access-Control-Allow-Origin'] = '*'
-        resp.headers['Access-Control-Allow-Headers'] = '*'
+        resp.headers['Access-Control-Allow-Origin'] = WEB_SERVER_ADDR
+        resp.headers['Access-Control-Expose-Headers'] = 'Authorization'
+        resp.headers['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS'
+        resp.headers['Access-Control-Allow-Headers'] = 'content-type'
         return resp
     
 class InputError(MyErrors):
